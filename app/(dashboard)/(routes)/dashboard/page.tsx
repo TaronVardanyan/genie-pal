@@ -6,7 +6,7 @@ import { Card } from '@/components/ui/card';
 import { useRouter } from 'next/navigation';
 import { routesData } from '@/constants';
 
-export default function DashboardPage() {
+function DashboardPage() {
   const router = useRouter();
 
   return (
@@ -44,3 +44,5 @@ export default function DashboardPage() {
     </div>
   );
 }
+
+export default DashboardPage;

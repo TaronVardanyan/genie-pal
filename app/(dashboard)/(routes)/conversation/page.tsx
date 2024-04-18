@@ -6,6 +6,9 @@ import { useState } from 'react';
 import ChatCompletionRequestMessage from 'openai';
 import Heading from '@/components/heading';
 import Empty from '@/components/empty';
+import Loader from '@/components/loader';
+import UserAvatar from '@/components/user-avatar';
+import BotAvatar from '@/components/bot-avatar';
 import { Form, FormField, FormItem, FormControl } from '@/components/ui/form';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -14,6 +17,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { formSchema } from './constants';
 import { useRouter } from 'next/navigation';
+import { cn } from '@/lib/utils';
 
 const ConversationPage = () => {
   const router = useRouter();
@@ -92,12 +96,28 @@ const ConversationPage = () => {
           </Form>
         </div>
         <div className="mt-4 space-y-4">
+          {isLoading && (
+            <div className="flex w-full items-center justify-center rounded-lg bg-muted p-8">
+              <Loader />
+            </div>
+          )}
           {!messages.length && !isLoading && (
             <Empty label="No conversation started!" />
           )}
           <div className="flex flex-col-reverse gap-y-4">
             {messages.map((message) => (
-              <div key={message.content}>{message.content}</div>
+              <div
+                key={message.content}
+                className={cn(
+                  'flex w-full items-start gap-x-8 rounded-lg p-8',
+                  message.role === 'user'
+                    ? 'border border-black/10 bg-white'
+                    : 'bg-muted',
+                )}
+              >
+                {message.role === 'user' ? <UserAvatar /> : <BotAvatar />}
+                <p className="text-sm">{message.content}</p>
+              </div>
             ))}
           </div>
         </div>
