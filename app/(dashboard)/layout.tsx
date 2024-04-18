@@ -1,9 +1,9 @@
-import { ReactNode } from 'react'
-import Navbar from '@/components/navbar'
-import Sidebar from '@/components/sidebar'
+import { ReactNode } from 'react';
+import Navbar from '@/components/navbar';
+import Sidebar from '@/components/sidebar';
 
 interface DashboardLayoutProps {
-  children: ReactNode
+  children: ReactNode;
 }
 
 const DashboardLayout = ({ children }: DashboardLayoutProps) => {
@@ -17,7 +17,7 @@ const DashboardLayout = ({ children }: DashboardLayoutProps) => {
         {children}
       </main>
     </div>
-  )
-}
+  );
+};
 
-export default DashboardLayout
+export default DashboardLayout;

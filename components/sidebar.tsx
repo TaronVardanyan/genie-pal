@@ -1,9 +1,10 @@
-'use client'
+'use client';
 
-import Link from 'next/link'
-import Image from 'next/image'
-import { Montserrat } from 'next/font/google'
-import { cn } from '@/lib/utils'
+import Link from 'next/link';
+import Image from 'next/image';
+import { Montserrat } from 'next/font/google';
+import { cn } from '@/lib/utils';
+import { usePathname } from 'next/navigation';
 import {
   LayoutDashboard,
   MessageSquare,
@@ -12,15 +13,14 @@ import {
   Music,
   Code,
   Settings,
-} from 'lucide-react'
-import { usePathname } from 'next/navigation'
+} from 'lucide-react';
 
 const montserrat = Montserrat({
   weight: '600',
   subsets: ['latin'],
-})
+});
 
-const routes = [
+const routesData = [
   {
     label: 'Dashboard',
     icon: LayoutDashboard,
@@ -62,10 +62,10 @@ const routes = [
     icon: Settings,
     href: '/settings',
   },
-]
+];
 
 const Sidebar = () => {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   return (
     <div className="flex h-full flex-col space-y-4 bg-[#1F2340] py-4 text-white">
@@ -79,7 +79,7 @@ const Sidebar = () => {
           </h1>
         </Link>
         <div className="space-y-1">
-          {routes.map((route) => (
+          {routesData.map((route) => (
             <Link
               key={route.href}
               href={route.href}
@@ -99,7 +99,7 @@ const Sidebar = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Sidebar
+export default Sidebar;
