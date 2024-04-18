@@ -1,7 +1,7 @@
-'use client'
+'use client';
 
-import { UserButton } from '@clerk/nextjs'
-import MobileSidebar from './mobile-sidebar'
+import { UserButton } from '@clerk/nextjs';
+import MobileSidebar from './mobile-sidebar';
 
 const Navbar = () => {
   return (
@@ -11,7 +11,7 @@ const Navbar = () => {
         <UserButton afterSignOutUrl="/" />
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;
