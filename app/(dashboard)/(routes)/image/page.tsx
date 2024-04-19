@@ -23,7 +23,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { useForm } from 'react-hook-form';
 import { formSchema, amountOptions, resolutionOptions } from './constants';
 import { useRouter } from 'next/navigation';
-import { cn } from '@/lib/utils';
 
 const ImagePage = () => {
   const router = useRouter();
